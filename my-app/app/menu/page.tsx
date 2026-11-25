@@ -1,4 +1,174 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+import MenuHero from "./components/menuHero";
+import MenuCategory from "./components/menuCategory";
+import MenuItem from "./components/menuItem";
+import MenuDetails from "./components/menuDetails";
+
+import {
+  menuItems,
+  categories,
+  MenuItemType,
+} from "./data/menuData";
+
 export default function Menu() {
+  const [selectedItem, setSelectedItem] =
+    useState<MenuItemType | null>(null);
+
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  // Filter menu items
+  const filteredItems =
+    activeCategory === "All"
+      ? menuItems
+      : menuItems.filter(
+        (item) => item.category === activeCategory
+      );
+
+  // Close modal using Escape key
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setSelectedItem(null);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  const categoryDescriptions: Record<string, string> = {
+    Appetizers: "A beautiful beginning to your Italian dining experience.",
+    "Main Dishes": "Traditional Italian favourites, prepared with passion.",
+    Desserts: "A little sweetness to complete your experience.",
+    Drinks: "Refreshing selections to accompany your meal.",
+  };
+
+  return (
+    <main className="min-h-screen bg-fourth text-white">
+
+      {/* Hero */}
+      <MenuHero />
+
+      {/* Category navigation */}
+      <nav className="sticky top-0 z-30 border-b border-white/10
+      bg-[#211d19]/95 backdrop-blur-md">
+
+        <div className="mx-auto flex max-w-7xl items-center
+        justify-start gap-6 overflow-x-auto px-5 py-4
+        md:justify-center">
+
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`shrink-0 whitespace-nowrap text-sm
+              tracking-wider transition duration-300
+              ${activeCategory === category
+                  ? "text-amber-400 border-b border-amber-400 pb-1"
+                  : "text-gray-300 hover:text-amber-400"
+                }`}
+            >
+              {category}
+            </button>
+          ))}
+
+        </div>
+      </nav>
+
+      {/* Menu content */}
+      <div className="mx-auto max-w-7xl px-5 py-12 md:px-10 md:py-16">
+
+        <div className="mb-14 text-center">
+          <span className="text-xs uppercase tracking-[0.4em]
+          text-amber-500">
+            A Taste of Italy
+          </span>
+
+          <h1 className="mt-3 font-cinzel text-3xl md:text-5xl">
+            Discover Our Menu
+          </h1>
+
+          <p className="mx-auto mt-4 max-w-xl text-sm
+          leading-7 text-gray-400 font-serif">
+            Carefully crafted dishes inspired by the flavours,
+            traditions and culinary heritage of Italy.
+          </p>
+        </div>
+
+        <div className="space-y-16">
+
+          {activeCategory === "All" ? (
+
+            // Display all categories separately
+            categories
+              .filter((category) => category !== "All")
+              .map((category) => (
+                <MenuCategory
+                  key={category}
+                  title={category}
+                  description={categoryDescriptions[category]}
+                >
+                  {menuItems
+                    .filter((item) => item.category === category)
+                    .map((item) => (
+                      <MenuItem
+                        key={item.id}
+                        item={item}
+                        onClick={setSelectedItem}
+                      />
+                    ))}
+                </MenuCategory>
+              ))
+
+          ) : (
+
+            // Display selected category
+            <MenuCategory
+              title={activeCategory}
+              description={categoryDescriptions[activeCategory]}
+            >
+              {filteredItems.map((item) => (
+                <MenuItem
+                  key={item.id}
+                  item={item}
+                  onClick={setSelectedItem}
+                />
+              ))}
+            </MenuCategory>
+
+          )}
+
+        </div>
+
+      </div>
+
+      {/* Detailed dish modal */}
+      <MenuDetails
+        item={selectedItem}
+        onClose={() => setSelectedItem(null)}
+      />
+
+      {/* Footer message */}
+      <div className="border-t border-white/10 py-10 text-center">
+        <p className="font-cinzel text-amber-500">
+          Le-Monte
+        </p>
+
+        <p className="mt-2 text-xs tracking-widest text-gray-500">
+          AUTHENTIC ITALIAN DINING
+        </p>
+      </div>
+
+    </main>
+  );
+}
+{/*export default function Menu() {
   return (
     <div className="h-screen overflow-auto text-white bg-fourth">
       <div id="title" className="flex flex-col justify-end items-center bg-black w-full h-1/4">
@@ -6,7 +176,7 @@ export default function Menu() {
         <h1 className="font-script text-6xl z-10">Our Menu </h1>
         <div className="text-3xl z-10">──── ୨୧ ────</div>
       </div>
-      {/*<img src="/images/menu-background.png" className=" sticky top-0 left-0 z-0 object-cover w-full h-full opacity-30" />*/}
+      {/*<img src="/images/menu-background.png" className=" sticky top-0 left-0 z-0 object-cover w-full h-full opacity-30" />
       <div id="menu" className=" grid gap-20 p-6 ">
         <div id="Appetizers" className="grid z-10 justify-start sm:justify-center items-center">
           <h1 className="font-cinzel text-3xl sm:text-4xl">Appetizers</h1>
@@ -244,4 +414,4 @@ export default function Menu() {
       </div>
     </div>
   )
-}
+}*/}

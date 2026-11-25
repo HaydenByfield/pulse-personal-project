@@ -24,6 +24,7 @@
   --color-third: var(--third);
   --color-fourth: var(--fourth);
   --color-fifth: var(--fifth);
+  --animate-zoomout: zoom-out 2s ease-out forwards;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,6 +33,19 @@
     --foreground: #ededed;
   }
 }
+
+@keyframes zoom-out {
+  0% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 
 body {
   background: var(--background);

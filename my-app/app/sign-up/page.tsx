@@ -40,6 +40,14 @@ export default function signUp() {
         setError(data.message);
         return;
       }
+      if (response.ok) {
+        setEmail("");
+        setPassword("");
+        setFirstName("");
+        setLastName("");
+        setPhone("");
+        setTerms_Agreements(false);
+      }
 
       // Automatically sign in after registration
       localStorage.setItem(

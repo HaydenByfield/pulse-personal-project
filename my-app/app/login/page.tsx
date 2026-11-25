@@ -32,6 +32,11 @@ export default function login() {
         setError(data.message);
         return;
       }
+      if (response.ok) {
+        setEmail("");
+        setPassword("");
+        setRememberMe(false);
+      }
 
       localStorage.setItem(
         "lemont_user",
