@@ -84,76 +84,58 @@ export default function Reservation() {
 
   return (
     <main className="relative flex min-h-screen w-full min-w-0 overflow-x-clip bg-fifth">
-
-      {/* LEFT IMAGE - LARGE DESKTOP ONLY */}
       <div className="relative hidden 2xl:block 2xl:w-[28%] 2xl:shrink-0">
         <img
           src="/images/italian-background2.jpg"
           alt="Italian restaurant interior"
           className="absolute inset-0 h-full w-full object-cover"
         />
-
         <div className="absolute inset-0 bg-black/40" />
-
         <div className="absolute bottom-16 left-8 z-10 text-white">
           <h1 className="font-script text-7xl">
             Le-Monte
           </h1>
-
           <p className="mt-3 max-w-sm font-serif text-xl leading-relaxed">
             Warmest of welcomes. It is our greatest pleasure to have you join us.
           </p>
         </div>
       </div>
 
-      {/* RESERVATION FORM */}
       <section className="flex min-w-0 flex-1 flex-col justify-center px-4 py-10 text-fourth sm:px-8 md:px-12 lg:px-10">
-
         <div className="mx-auto w-full max-w-2xl">
-
-          {/* Heading */}
           <header className="mb-8">
             <h2 className="font-serif text-3xl font-bold italic text-third sm:text-4xl md:text-5xl">
               Reservation
             </h2>
-
             <h3 className="mt-2 font-serif text-2xl font-bold italic sm:text-3xl">
               A Table Just For You
             </h3>
-
             <p className="mt-3 font-serif text-base sm:text-lg">
               Choose your moment. We'll take care of the rest.
             </p>
           </header>
-
           <form
             onSubmit={handleReservation}
             className="flex flex-col gap-5"
           >
-
             <h3 className="font-serif text-xl font-bold text-third sm:text-2xl">
               Your Evening
             </h3>
-
-            {/* Reservation inputs */}
             <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-4">
-
               <input
                 type="date"
                 required
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="col-span-2 h-12 min-w-0 bg-white px-3 text-sm text-black sm:text-base"
+                className="col-span-2 h-12 min-w-0 bg-white px-3 font-cinzel text-sm text-black sm:text-base"
               />
-
               <input
                 type="time"
                 required
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-                className="h-12 min-w-0 bg-white px-3 text-sm text-black sm:text-base"
+                className="h-12 min-w-0 bg-white px-3 font-cinzel text-sm text-black sm:text-base"
               />
-
               <select
                 value={guest}
                 onChange={(e) => setGuest(Number(e.target.value))}
@@ -165,46 +147,39 @@ export default function Reservation() {
                   </option>
                 ))}
               </select>
-
               <input
                 type="text"
                 required
                 value={firstname}
                 onChange={(e) => setFirstName(e.target.value)}
                 placeholder="First name"
-                className="h-12 min-w-0 bg-white px-3 text-sm text-black sm:text-base"
+                className="h-12 min-w-0 bg-white px-3 font-cinzel text-sm text-black sm:text-base"
               />
-
               <input
                 type="text"
                 required
                 value={lastname}
                 onChange={(e) => setLastName(e.target.value)}
                 placeholder="Last name"
-                className="h-12 min-w-0 bg-white px-3 text-sm text-black sm:text-base"
+                className="h-12 min-w-0 bg-white px-3 font-cinzel text-sm text-black sm:text-base"
               />
-
               <input
                 type="tel"
                 required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="Mobile number"
-                className="col-span-2 h-12 min-w-0 bg-white px-3 text-sm text-black sm:text-base"
+                className="col-span-2 h-12 min-w-0 bg-white px-3 font-cinzel text-sm text-black sm:text-base"
               />
-
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email address"
-                className="col-span-2 h-12 min-w-0 bg-white px-3 text-sm text-black sm:text-base"
+                className="col-span-2 h-12 min-w-0 bg-white px-3 font-cinzel text-sm text-black sm:text-base"
               />
-
             </div>
-
-            {/* Preferences */}
             <div className="flex items-start gap-3">
               <input
                 type="checkbox"
@@ -213,14 +188,11 @@ export default function Reservation() {
                 onChange={(e) => setTerms_Agreements(e.target.checked)}
                 className="mt-1 h-5 w-5 shrink-0"
               />
-
               <label htmlFor="terms_agreements" className="font-serif text-sm sm:text-base">
                 I agree to the Terms of Use and acknowledge the Privacy Policy.
               </label>
             </div>
-
             <hr className="border-fourth/20" />
-
             <div className="flex items-start gap-3">
               <input
                 type="checkbox"
@@ -229,25 +201,20 @@ export default function Reservation() {
                 onChange={(e) => setPreferences(e.target.checked)}
                 className="mt-1 h-5 w-5 shrink-0"
               />
-
               <label htmlFor="preferences" className="font-serif text-sm sm:text-base">
                 Save these dining preferences to my guest profile for future visits.
               </label>
             </div>
-
-            {/* Feedback */}
             {error && (
               <p role="alert" className="text-sm text-red-600">
                 {error}
               </p>
             )}
-
             {success && (
               <p role="status" className="text-sm text-green-700">
                 {success}
               </p>
             )}
-
             <button
               type="submit"
               disabled={loading}
@@ -255,34 +222,27 @@ export default function Reservation() {
             >
               {loading ? "Submitting..." : "Confirm My Reservation"}
             </button>
-
           </form>
         </div>
       </section>
 
-      {/* LIVE RESERVATION SUMMARY - LAPTOP AND DESKTOP */}
       <aside
         aria-live="polite"
         className="hidden w-72 shrink-0 flex-col justify-center bg-second/70 px-5 py-10 lg:flex xl:w-80"
       >
-
         <div className="border-b border-fourth/30 pb-5">
           <p className="font-cinzel text-xs tracking-[0.2em] text-third">
             LE-MONTE
           </p>
-
           <h2 className="mt-2 font-serif text-2xl font-bold italic text-fourth">
             Your Reservation
           </h2>
-
           <p className="mt-2 font-serif text-sm text-fourth/70">
             A preview of your evening with us.
           </p>
         </div>
 
-        {/* Date and time */}
         <div className="mt-6 flex flex-col gap-5">
-
           <div>
             <p className="font-cinzel text-xs tracking-widest text-third">
               DATE
@@ -291,7 +251,6 @@ export default function Reservation() {
               {formattedDate}
             </p>
           </div>
-
           <div>
             <p className="font-cinzel text-xs tracking-widest text-third">
               TIME
@@ -300,7 +259,6 @@ export default function Reservation() {
               {time || "Not selected"}
             </p>
           </div>
-
           <div>
             <p className="font-cinzel text-xs tracking-widest text-third">
               GUESTS
@@ -309,42 +267,31 @@ export default function Reservation() {
               {guest} {guest === 1 ? "Guest" : "Guests"}
             </p>
           </div>
-
           <hr className="border-fourth/20" />
-
-          {/* Guest details */}
           <div>
             <p className="font-cinzel text-xs tracking-widest text-third">
               GUEST DETAILS
             </p>
-
             <p className="mt-2 break-words font-serif text-base text-fourth">
               {firstname || lastname
                 ? `${firstname} ${lastname}`.trim()
                 : "Your name"}
             </p>
-
             <p className="mt-2 break-all font-serif text-sm text-fourth/70">
               {email || "Email address"}
             </p>
-
             <p className="mt-1 break-words font-serif text-sm text-fourth/70">
               {phone || "Mobile number"}
             </p>
           </div>
-
           <hr className="border-fourth/20" />
-
-          {/* Additional preferences */}
           <div>
             <p className="font-cinzel text-xs tracking-widest text-third">
               ADDITIONAL DETAILS
             </p>
-
             <p className="mt-2 font-serif text-sm text-fourth">
               Terms accepted: {terms_agreements ? "Yes" : "Not yet"}
             </p>
-
             <p className="mt-1 font-serif text-sm text-fourth">
               Save preferences: {preferences ? "Yes" : "No"}
             </p>
@@ -368,131 +315,3 @@ export default function Reservation() {
   );
 }
 
-{/*import { useState } from "react"
-export default function signUp() {
-  // Creates a variable called rememberMe that orginal-state being unchecked is viewed as false
-  const [terms_agreements, setTerms_Agreements] = useState(false)
-  const [preferences, setPreferences] = useState(false)
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [guest, setGuest] = useState<number>(2);
-
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  async function handleReservation(
-    e: React.FormEvent<HTMLFormElement>
-  ) {
-    e.preventDefault();
-
-    setError("");
-    setSuccess("");
-    setLoading(true);
-
-    try {
-      const response = await fetch("/api/auth/reservations", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          date,
-          time,
-          guest,
-          firstname,
-          lastname,
-          phone,
-          email,
-        })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.message);
-        return;
-      }
-
-      setSuccess(data.message);
-
-      // Clear the form
-      setDate("");
-      setTime("");
-      setGuest(2);
-      setFirstName("");
-      setLastName("");
-      setPhone("");
-      setEmail("");
-      setTerms_Agreements(false)
-
-    } catch {
-      setError("Unable to connect. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  }
-  return (
-
-    <div id="background" className=" flex w-full min-w-0  justify-between items-start 
-                  h-screen bg-fifth  gap-4">
-      <div className=" hidden md:block absolute z-1  md:bottom-[20] md:left-3 lg:bottom-[55] xl:bottom-[20]  lg:left-5 text-2xl sm:text-4xl md:text-6xl lg:text-8xl text-white font-script">Le-Monte</div>
-      <div className=" hidden md:block absolute z-1  md:bottom-[-50] md:left-3 lg:bottom-[-50] lg:left-5 text-md sm:text-lg md:text-xl lg:text-3xl text-white w-[120px] sm:w-[190px] md:w-[400px] lg:w-[430px] xl:w-[630px] font-serif">Warmest of welcomes. To our new guest. Its is our greastest pleasure to have you on board</div>
-      <div className=" hidden md:block w-1/2 h-screen bg-black">
-        <img src="/images/italian-background2.jpg" className=" hidden md:block relative z-0 w-full h-full min-h-full object-cover opacity-50" />
-      </div>
-      <div className=" flex-1 grid justify-center grid-rows-[auto_auto_auto_auto] text-fourth p-2 ">
-        <h2 id="greetings" className="text-third text-3xl  sm:text-4xl md:text-5xl lg:text-6xl ml-[-10] font-serif font-bold italic">Reservation</h2>
-        <h2 id="greetings" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl ml-[-10] font-serif font-bold italic">A Table Just For You</h2>
-        <p className="text-lg font-serif">Choose your moment. We'll take care of the rest </p>
-        <form onSubmit={handleReservation} id="login-UI" className=" flex-1 grid grid-rows-[40px_2fr_30px_auto_auto] gap-3 min-w-0 max-w-150 w-full">
-
-          <h2 id="login-title" className=" grid items-center text-xl sm:text-2xl md:text-3xl lg:4xl text-third font-bold font-serif">Your Evening</h2>
-          <div id="login-input" className="grid font-cinzel italic items-center grid-rows-[auto_auto_auto_auto_auto] grid-cols-[1fr_1fr] gap-4 text-lg">
-            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className=" flex-1 row-start-1 col-span-2 min-w-0 h-[50px] text-black bg-white h-4/8 " />
-            <input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="flex-1 row-start-2 col-start-1 min-w-0 h-[50px] text-black bg-white h-4/8" />
-            <select value={guest} onChange={(e) => setGuest(Number(e.target.value))} className="flex-1 row-start-2 col-start-2 min-w-0 h-[50px] text-black bg-white  h-4/8 " >
-              <option value="1">1 Guest</option>
-              <option value="2">2 Guest</option>
-              <option value="3">3 Guest</option>
-              <option value="4">4 Guest</option>
-              <option value="5">5 Guest</option>
-              <option value="6">6 Guest</option>
-              <option value="7">7 Guest</option>
-              <option value="8">8 Guest</option>
-            </select>
-            <input type="text" value={firstname} onChange={(e) => setFirstName(e.target.value)} placeholder=" first name" className="flex-1 min-w-0 h-[50px] row-start-3 col-start-1 text-black bg-white h-4/8 " />
-            <input type="text" value={lastname} onChange={(e) => setLastName(e.target.value)} placeholder=" last name" className="flex-1 min-w-0 h-[50px] row-start-3 col-start-2 text-black bg-white h-4/8 " />
-            <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder=" mobile number" className="flex-1 min-w-0 h-[50px] row-start-4 col-span-2 text-black bg-white h-4/8 " />
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder=" email address" className="flex-1 min-w-0 h-[50px] row-start-5 col-span-2 text-black bg-white  h-4/8 " />
-          </div>
-          <div id="login-save" className="flex items-center gap-2">
-            <input className="  w-5 h-5" type="checkbox" id="remember" checked={terms_agreements} onChange={(e) => setTerms_Agreements(e.target.checked)} />
-            <label htmlFor="terms_agreements" className=" font-serif  text-sm sm:text-md">I agree to Terms of Use and acknowledge the privacy policy</label>
-          </div>
-          <hr />
-          <div id="login-save" className="flex items-center gap-2">
-            <input className="  w-5 h-5" type="checkbox" id="remember" checked={preferences} onChange={(e) => setPreferences(e.target.checked)} />
-            <label htmlFor="preferences" className=" font-serif text-sm sm:text-md">Save these dinning preferences to my guest profile for future visits</label>
-          </div>
-          {error && (
-            <p className="text-red-500">{error}</p>
-          )}
-          {success && (
-            <p className="text-green-600">{success}</p>
-          )}
-
-          <button type="submit" disabled={loading} className="font-cinzel border-2 p-0 sm:p-6 bg-second hover:shadow-[5px_5px_10px_black] cursor-pointer">{loading ? "Submitting" : "Confirm my reservation"}</button>
-
-        </form>
-      </div>
-
-    </div>
-
-
-  );
-}*/}

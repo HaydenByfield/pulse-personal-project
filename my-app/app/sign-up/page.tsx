@@ -82,18 +82,18 @@ export default function signUp() {
           <h2 id="login-title" className=" grid items-center text-xl sm:text-2xl md:text-3xl lg:4xl  font-bold font-serif">Sign Up</h2>
           <div id="login-input" className="grid font-cinzel italic items-center grid-rows-[auto_auto_auto_auto_auto] grid-cols-[1fr_1fr] gap-4 text-lg">
             <p className=" row-start-1 col-span-2 text-justify italic font-serif text-lg ">The finest french cusine since 1964. Experience handcrafted authenctic italian recipes, with rich flavors made from fresh ingredients.</p>
-            <input placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="flex-1 row-start-2 col-start-1 min-w-0 h-[50px] text-black bg-white h-4/8" required />
-            <input placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} className="flex-1 row-start-2 col-start-2 min-w-0 h-[50px] text-black bg-white  h-4/8 " required />
-            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="flex-1 min-w-0 h-[50px] row-start-3 col-span-2 text-black bg-white h-4/8 " required />
-            <input type="tel" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="flex-1 min-w-0 h-[50px] row-start-4 col-span-2 text-black bg-white h-4/8 " required />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} minLength={8} maxLength={72} className="flex-1 min-w-0 h-[50px] row-start-5 col-span-2 text-black bg-white  h-4/8 " required />
+            <input placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="flex-1 row-start-2 col-start-1 min-w-0 h-[50px] text-black bg-white h-4/8 pl-4 " required />
+            <input placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} className="flex-1 row-start-2 col-start-2 min-w-0 h-[50px] text-black bg-white  h-4/8 pl-4 " required />
+            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="flex-1 min-w-0 h-[50px] row-start-3 col-span-2 text-black bg-white h-4/8 pl-4 " required />
+            <input type="tel" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="flex-1 min-w-0 h-[50px] row-start-4 col-span-2 text-black bg-white h-4/8 pl-4 " required />
+            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} minLength={8} maxLength={72} className="flex-1 min-w-0 h-[50px] row-start-5 col-span-2 text-black bg-white  h-4/8 pl-4 " required />
           </div>
           <div id="login-save" className="flex items-center gap-2">
-            <input className="  w-5 h-5" type="checkbox" id="remember" checked={terms_agreements} onChange={(e) => setTerms_Agreements(e.target.checked)} />
+            <input className="w-5 h-5" type="checkbox" id="remember" checked={terms_agreements} onChange={(e) => setTerms_Agreements(e.target.checked)} />
             <label htmlFor="remember" className=" font-serif text-md">I agree to Terms of Use and acknowledge the privacy policy</label>
           </div>
           {error && (<p className="text-red-500">{error}</p>)}
-          <button type="submit" disabled={loading} className="font-cinzel border-2 p-2 sm:p-6 bg-second hover:shadow-[5px_5px_10px_black] cursor-pointer">{loading ? "Creating Account..." : "Sign Up"}</button>
+          <button type="submit" disabled={loading} className="font-cinzel border-2-black p-2 sm:p-4 bg-second transition-all duration-300 hover:bg-fourth hover:text-white cursor-pointer">{loading ? "Creating Account..." : "Sign Up"}</button>
           <div className=" flex justify-center font-serif gap-1 text-md">
             <p>Already a guest?</p>
             <a href="/login" className="  relative cursor-pointer underline text-blue-500 hover:opacity-50">Sign in</a>

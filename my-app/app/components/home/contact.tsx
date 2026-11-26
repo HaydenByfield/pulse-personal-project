@@ -5,7 +5,7 @@ export default function contactUs() {
         <div className="grid gap-2">
           <p className="font-serif text-yellow-500  text-sm sm:-text-md md:text-lg lg:text-lg">Find Your Way To us</p>
           <h1 className=" text-md sm:text-md md:text-xl lg:text-3xl text-second font-cinzel">A little Italy, <br /> in Marlebone.</h1>
-          <a className="  text-sm sm:text-sm md:text-md lg:text-lg text-fifth font-serif border-b-2 ">Get directions →</a>
+          <a href="#" className="  text-sm sm:text-sm md:text-md lg:text-lg text-fifth font-serif border-b-2 ">Get directions →</a>
         </div>
         <div className="grid gap-2">
           <p className="font-cinzel text-sm sm:text-sm md:text-md lg:text-md text-white font-bold">COME ON OVER</p>
