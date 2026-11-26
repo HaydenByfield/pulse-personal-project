@@ -1,4 +1,4 @@
-# Pulse-Personal-Project
+# Pulse-Personal-Project(Le-Monte Restaurant)
 Develop the frontend for your own personal responsive website ensuring you follow the principles of refactoring a UI.
 
 # Getting Started

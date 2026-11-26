@@ -40,9 +40,9 @@ export default function header() {
   }
   return (
     <header id="itl-hdr" className=" relative z-50 flex flex1 min-w-0 justify-between items-center font-serif sm:text-sm md:text-md lg:text-lg bg-second h-20 gap-2">
-      <div id="restaurant">
+      <div id="restaurant" className="">
         <a className=" text-black ml-4 font-script sm:text-lg md:text-xl lg:text-2xl" href="/">LE-MONTE</a>
-        <p></p>
+        {/*<p className=" text-black ml-4 font-serif sm:text-lg md:text-xl:text-2xl">Authentic italian Cusines</p>*/}
       </div>
       <nav id="navigation" className="text-black hidden md:flex justify-around gap-5 ">
         <Link href="/#story" className="hover:opacity-50">Our Story</Link>
